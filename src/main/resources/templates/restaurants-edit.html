@@ -1,0 +1,54 @@
+
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://thymeleaf.org"
+
+>
+<link th:href="@{/css/styles.css}" rel="stylesheet"/>
+<body  id="page-top">
+<div class="container "style="padding-top: 10rem">
+  <form class="row g-3 needs-validation" novalidate role="form" method="post" th:action="@{/restaurant/{restaurantId}/edit(restaurantId=${restaurant.id})}" th:object="${restaurant}">
+    <input type="hidden" th:field="*{id}">
+    <div class="col-md-4">
+      <label for="title" class="form-label">Title</label>
+      <input type="text" class="form-control"
+             id="title"
+             placeholder="Please enter a title"
+             th:field="*{title}"
+             required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="imageURL" class="form-label">ImageURL</label>
+      <input type="text"
+             class="form-control"
+             id="imageURL"
+             placeholder="Please enter a imageURL"
+             th:field="*{photoUrl}"
+             required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="content" class="form-label">Content</label>
+      <input type="text"
+             class="form-control"
+             id="content"
+             placeholder="Please enter a Content"
+             th:field="*{Content}"
+             required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+
+    <div class="col-12">
+      <button class="btn btn-primary" type="submit">Submit form</button>
+    </div>
+  </form>
+</div>
+</body  >
+
+</html>
