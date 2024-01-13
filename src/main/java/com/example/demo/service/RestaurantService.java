@@ -12,4 +12,6 @@ public interface RestaurantService {
     RestaurantDto findRestaurantById( long restaurantId);
 
     void updateRestaurant(RestaurantDto restaurant);
+
+    void delete(long restaurantId);
 }

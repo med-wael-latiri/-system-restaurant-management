@@ -43,6 +43,11 @@ public class RestaurantImpl implements RestaurantService {
         restaurantRepository.save(restaurant);
     }
 
+    @Override
+    public void delete(long restaurantId) {
+        restaurantRepository.deleteById(restaurantId);
+    }
+
     private Restaurant mapToRestaurant(RestaurantDto restaurant) {
         Restaurant restaurantDto=Restaurant.builder()
                 .id(restaurant.getId())

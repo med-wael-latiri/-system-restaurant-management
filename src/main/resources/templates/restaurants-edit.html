@@ -15,6 +15,7 @@
              placeholder="Please enter a title"
              th:field="*{title}"
              required>
+      <p th:if="${#fields.hasErrors('title')}" class="text-danger"  th:errors="*{title}"></p>
       <div class="valid-feedback">
         Looks good!
       </div>
@@ -27,6 +28,7 @@
              placeholder="Please enter a imageURL"
              th:field="*{photoUrl}"
              required>
+      <p th:if="${#fields.hasErrors('photoUrl')}" class="text-danger"  th:errors="*{photoUrl}"></p>
       <div class="valid-feedback">
         Looks good!
       </div>
@@ -39,6 +41,7 @@
              placeholder="Please enter a Content"
              th:field="*{Content}"
              required>
+      <p th:if="${#fields.hasErrors('Content')}" class="text-danger"  th:errors="*{Content}"></p>
       <div class="valid-feedback">
         Looks good!
       </div>
