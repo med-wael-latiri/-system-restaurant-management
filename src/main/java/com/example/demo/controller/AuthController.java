@@ -38,11 +38,11 @@ public class AuthController {
     ) {
         Users existingUsersEmail = userService.findByEmail(user.getEmail());
         if (existingUsersEmail != null && existingUsersEmail.getEmail() != null && !existingUsersEmail.getEmail().isEmpty()){
-            result.rejectValue("email", "email already used");
+           return "redirect:/register?fail";
         }
         Users existingUsersname = userService.findByUsername(user.getUsername());
         if (existingUsersname != null && existingUsersname.getUsername() != null && !existingUsersname.getUsername().isEmpty()){
-            result.rejectValue("Username", "Username already used");
+            return "redirect:/register?fail";
         }
              if(result.hasErrors()) {
                  model.addAttribute("user", user);
