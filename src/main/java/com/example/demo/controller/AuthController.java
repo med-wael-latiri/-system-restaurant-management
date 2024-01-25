@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class AuthController {
     private UserService userService;
-
     public AuthController(UserService userService) {
         this.userService = userService;
     }
@@ -32,6 +31,21 @@ public class AuthController {
         RegistrationDto user = new RegistrationDto();
         model.addAttribute("user", user);
         return "register";
+    }
+    @PostMapping("/login/save")
+    public String login (@Valid @ModelAttribute("user")RegistrationDto user, BindingResult result ,Model model
+    ) {
+        Users existingUsersEmail = userService.findByEmail(user.getEmail());
+        if (existingUsersEmail != null && existingUsersEmail.getEmail() != null && !existingUsersEmail.getEmail().isEmpty()){
+            return "redirect:/login?fail";
+        }
+
+        if(result.hasErrors()) {
+            model.addAttribute("user", user);
+            return "login";
+        }
+        userService.saveUser(user);
+        return "redirect:/restaurant?success";
     }
     @PostMapping("/register/save")
     public String register (@Valid @ModelAttribute("user")RegistrationDto user, BindingResult result ,Model model

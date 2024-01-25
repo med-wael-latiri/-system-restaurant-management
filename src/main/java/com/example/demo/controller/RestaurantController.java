@@ -30,6 +30,12 @@ public class RestaurantController {
     public String Listsrestaurants(Model model){
         List<RestaurantDto> restaurants=restaurantService.findAllResto();
         model.addAttribute("restaurants",restaurants);
+        return "restaurants";
+    }
+    @GetMapping("/restaurant-admin")
+    public String ListRestaurantsAdmin(Model model){
+        List<RestaurantDto> restaurants=restaurantService.findAllResto();
+        model.addAttribute("restaurants",restaurants);
         return "restaurants-lists";
     }
     @GetMapping("/restaurant/new")
